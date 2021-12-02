@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { DataStorageService } from '../shared/data-storge.service';
 
 @Component(
 {
@@ -6,9 +7,14 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
     templateUrl: './header.component.html'
 })
 
-export class HeaderComponent implements OnInit{
-    ngOnInit(){
-        
+export class HeaderComponent{
+    constructor(private dataStorageService: DataStorageService) {}
+    
+    saveData(){
+        this.dataStorageService.storeRecipes();
     }
 
+    onFetchData(){
+        this.dataStorageService.fetcRecipes().subscribe();
+    }
 }
