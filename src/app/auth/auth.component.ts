@@ -34,7 +34,7 @@ export class AuthCompoenent{
         if(this.isLoginMode){
             authObs = this.authService.login(email,password);
         }else {
-            this.authService.signUp(email,password);
+            authObs = this.authService.signUp(email,password);
         }
 
         authObs.subscribe(
@@ -46,10 +46,10 @@ export class AuthCompoenent{
                 this.isLoading = false;
             } 
         );
-
-        
         form.reset();
     }
 
-
+    onHandleError() {
+        this.error = null;
+    }
 }
